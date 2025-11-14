@@ -91,13 +91,13 @@
                                         </div>
                                     </div>
                                     <div class="row mt-5">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="aes">AES Time</label>
+                                                <label for="aes">Response Time AES</label>
                                                 <input type="text"
                                                     class="form-control @error('aes') is-invalid @enderror"
                                                     id="aes" name="aes" placeholder="AES Time" required readonly
-                                                    value="{{ number_format($data->decrypt_aes_time, 8) }} seconds">
+                                                    value="{{ number_format($data->aes_time, 8) }} seconds">
                                                 @error('aes')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -105,13 +105,71 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="rc4">RC4 Time</label>
+                                                <label for="rc4">Response Time RC4</label>
                                                 <input type="text"
                                                     class="form-control @error('rc4') is-invalid @enderror"
                                                     id="rc4" name="rc4" placeholder="RC4 Time" required readonly
-                                                    value="{{ number_format($data->decrypt_rc4_time, 8) }} seconds">
+                                                    value="{{ number_format($data->rc4_time, 8) }} seconds">
+                                                @error('rc4')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="rc4">Response Time AES+RC4</label>
+                                                <input type="text"
+                                                    class="form-control @error('rc4') is-invalid @enderror"
+                                                    id="rc4" name="rc4" placeholder="AES+RC4 Time" required readonly
+                                                    value="{{ number_format($data->total_time, 8) }} seconds">
+                                                @error('rc4')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="aes">Memory AES</label>
+                                                <input type="text"
+                                                    class="form-control @error('aes') is-invalid @enderror"
+                                                    id="aes" name="aes" placeholder="AES Memory" required readonly
+                                                    value="{{ $data->aes_memory }} byte">
+                                                @error('aes')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="rc4">Memory RC4</label>
+                                                <input type="text"
+                                                    class="form-control @error('rc4') is-invalid @enderror"
+                                                    id="rc4" name="rc4" placeholder="RC4 Memory" required readonly
+                                                    value="{{ $data->rc4_memory }} byte">
+                                                @error('rc4')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="rc4">Memory AES+RC4</label>
+                                                <input type="text"
+                                                    class="form-control @error('rc4') is-invalid @enderror"
+                                                    id="rc4" name="rc4" placeholder="AES+RC4 Memory" required readonly
+                                                    value="{{ $data->total_memory }} byte">
                                                 @error('rc4')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}

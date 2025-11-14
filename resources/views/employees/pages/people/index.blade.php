@@ -39,8 +39,8 @@
                                             <th>Time</th>
                                             <th>Name</th>
                                             <th>NIK</th>
-                                            <th>RC4 Time</th>
-                                            <th>AES Time</th>
+                                            <th>Response Time</th>
+                                            <th>Total Memory</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -50,8 +50,11 @@
                                                 <td>{{ $data->created_at->format('d-M-Y H:i') }}</td>
                                                 <td>{{ $data->name }}</td>
                                                 <td>{{ $data->nik }}</td>
-                                                <td>{{ number_format($data->decrypt_rc4_time, 8) }}</td>
-                                                <td>{{ number_format($data->decrypt_aes_time, 8) }}</td>
+                                                <td>{{ number_format($data->total_time, 8) }} seconds</td>
+                                                <td>{{ $data->total_memory }} byte</td>
+                                                {{-- <td>{{ number_format($data->total_memory / 1024, 2) }} KB</td>
+                                                <td>{{ number_format($data->total_memory / 1048576, 2) }} MB</td>
+                                                <td>{{ number_format($data->total_memory / 1073741824, 2) }} GB</td> --}}
                                                 <td>
                                                     <div class="d-flex ">
                                                         <a href="{{ route("people.show", $data) }}" class="btn btn-primary mx-1" id="detail"> Detail</a>
@@ -61,16 +64,6 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Time</th>
-                                            <th>Name</th>
-                                            <th>NIK</th>
-                                            <th>RC4 Time</th>
-                                            <th>AES Time</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                             <!-- /.card-body -->

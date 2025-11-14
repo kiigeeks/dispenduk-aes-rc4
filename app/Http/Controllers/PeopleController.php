@@ -65,24 +65,49 @@ class PeopleController extends Controller
         ]);
 
         $data = json_encode($request->all());
+        // {"name":"Nila","nik":"3578080809950002","birthday":"2025-10-30"}
+        // {"name":"Nila","nik":"3578080809950002","birthday":"2025-10-30"}
 
-        $aesResult = EncryptionService::encryptAES($data);
-        $rc4Result = EncryptionService::encryptRC4($aesResult['encryptedData']);
+        // $aesResult = EncryptionService::encryptAES($data);
+        // $rc4Result = EncryptionService::encryptRC4($aesResult['encryptedData']);
 
-        $validated['data'] = $rc4Result['encryptedData'];
+        // ========== AES ==========
+        $startMemory = memory_get_usage();
+        $aes = EncryptionService::encryptAES($data);
+        $aesMemory = memory_get_usage() - $startMemory;
+
+        // ========== RC4 ==========
+        $startMemory = memory_get_usage();
+        $rc4 = EncryptionService::encryptRC4($data);
+        $rc4Memory = memory_get_usage() - $startMemory;
+
+        // ========== AES + RC4 Combined ==========
+        $startTime = microtime(true);
+        $startMemory = memory_get_usage();
+
+        $aesCombined = EncryptionService::encryptAES($data);
+        $rc4Combined = EncryptionService::encryptRC4($aesCombined['encryptedData']);
+
+        $aesRc4Time = microtime(true) - $startTime;
+        $aesRc4Memory = memory_get_usage() - $startMemory;
+
+
+        $validated['data'] = $rc4Combined['encryptedData'];
+        $validated['aes_time'] = $aes['timeTaken'];
+        $validated['aes_memory'] = $aesMemory;
+        $validated['rc4_time'] = $rc4['timeTaken'];
+        $validated['rc4_memory'] = $rc4Memory;
+        $validated['total_time'] = $aesRc4Time;
+        $validated['total_memory'] = $aesRc4Memory;
 
         $result = People::create($validated);
-
-        // $type = gettype($request);
-        // dd($type); //object
 
         if ($result) {
             Alert::success('Congrats', 'Successfully created');
             return view('employees.pages.people.response', [
                 "menu" => "Data Penduduk Baru",
                 "data" => $request,
-                "aes_time" => $aesResult['timeTaken'],
-                "rc4_time" => $rc4Result['timeTaken'],
+                "result" => $result,
             ]);
         } else {
             Alert::error('Failed', 'Failed to created');
@@ -174,3 +199,4 @@ class PeopleController extends Controller
         }
     }
 }
+
