@@ -136,7 +136,7 @@
                                                 <input type="text"
                                                     class="form-control @error('aes') is-invalid @enderror"
                                                     id="aes" name="aes" placeholder="AES Memory" required readonly
-                                                    value="{{ $result->aes_time }} byte">
+                                                    value="{{ $result->aes_memory }} byte">
                                                 @error('aes')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -150,7 +150,7 @@
                                                 <input type="text"
                                                     class="form-control @error('rc4') is-invalid @enderror"
                                                     id="rc4" name="rc4" placeholder="RC4 Memory" required readonly
-                                                    value="{{ $result->rc4_time }} byte">
+                                                    value="{{ $result->rc4_memory }} byte">
                                                 @error('rc4')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -164,7 +164,7 @@
                                                 <input type="text"
                                                     class="form-control @error('rc4') is-invalid @enderror"
                                                     id="rc4" name="rc4" placeholder="AES+RC4 Memory" required readonly
-                                                    value="{{ $result->total_time }} byte">
+                                                    value="{{ $result->total_memory }} byte">
                                                 @error('rc4')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
