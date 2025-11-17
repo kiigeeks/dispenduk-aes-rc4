@@ -24,73 +24,31 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
-                {{-- <div class="row">
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-info">
-                            <div class="inner">
-                                <h3>{{ $rooms }}</h3>
-
-                                <p>Rooms</p>
+                <div class="row">
+                    <div class="col-12">
+                        <!-- general form elements -->
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">Selamat Datang di Admin Page</h3>
                             </div>
-                            <div class="icon">
-                                <i class="fa fa-bed"></i>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>Program simulasi enkripsi dan dekripsi data penduduk menggunakan algoritma AES, RC4 dan AES + RC4.</p>
+                                        <p>Parameter pengujian :
+                                            <ul>
+                                                <li>Respon Time yang dibutuhkan setiap algoritma enkripsi.</li>
+                                                <li>Load Memory yang digunakan setiap algoritma enkripsi.</li>
+                                                <li>Avalanche Effect setiap algoritma enkripsi dengan 3 Studi kasus (Plainteks yang berbeda, Key yang berbeda, dan Plainteks & Key yang berbeda).</li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <a href="{{ route("admin-rooms") }}" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-warning">
-                            <div class="inner">
-                                <h3>{{ $galleries }}</h3>
-
-                                <p>Photo Galleries</p>
-                            </div>
-                            <div class="icon">
-                                <i class="far fa-image"></i>
-                            </div>
-                            <a href="{{ route("admin-galleries") }}" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-success">
-                            <div class="inner">
-                                <h3>{{ $testimonials }}</h3>
-
-                                <p>Testimonials</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fa fa-comments"></i>
-                            </div>
-                            <a href="{{ route("admin-testimonials") }}" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-danger">
-                            <div class="inner">
-                                <h3>{{ $reservations }}</h3>
-                                <p>Reservations</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fa fa-globe"></i>
-                            </div>
-                            <a href="{{ route("admin-reservations") }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                </div> --}}
-
-            </div><!-- /.container-fluid -->
+                </div>
+            </div>
         </section>
         <!-- /.content -->
     </div>

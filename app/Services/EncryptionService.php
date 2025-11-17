@@ -34,9 +34,8 @@ class EncryptionService
         ];
     }
 
-    public static function encryptRC4($data)
+    public static function encryptRC4($data, $key)
     {
-        $key = env('ENCRYPT_KEY');
         $startTime = microtime(true);
 
         $s = [];
@@ -74,10 +73,8 @@ class EncryptionService
         ];
     }
 
-    public static function decryptRC4($encryptedData)
+    public static function decryptRC4($encryptedData, $key)
     {
-        $key = env('ENCRYPT_KEY');
-
         $startTime = microtime(true);
 
         $s = [];

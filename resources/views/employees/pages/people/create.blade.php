@@ -90,6 +90,64 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="birthplace">Tempat Lahir</label>
+                                                <input type="text"
+                                                    class="form-control @error('birthplace') is-invalid @enderror"
+                                                    id="birthplace" name="birthplace" placeholder="Tempat Lahir" required
+                                                    value="{{ old('birthplace') }}">
+                                                @error('birthplace')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="gender">Jenis Kelamin</label>
+                                                <select 
+                                                    class="form-control @error('gender') is-invalid @enderror"
+                                                    id="gender" 
+                                                    name="gender"
+                                                    required
+                                                >
+                                                    <option value="" disabled selected>Pilih Gender</option>
+                                                    <option value="Laki-laki" {{ old('gender') == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                                                    <option value="Perempuan" {{ old('gender') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                                                </select>
+                                                @error('gender')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="religion">Agama</label>
+                                                <select 
+                                                    class="form-control @error('religion') is-invalid @enderror"
+                                                    id="religion" 
+                                                    name="religion"
+                                                    required
+                                                >
+                                                    <option value="" disabled selected>Pilih Agama</option>
+                                                    <option value="Islam" {{ old('religion') == 'Islam' ? 'selected' : '' }}>Islam</option>
+                                                    <option value="Protestan" {{ old('religion') == 'Protestan' ? 'selected' : '' }}>Protestan</option>
+                                                    <option value="Katolik" {{ old('religion') == 'Katolik' ? 'selected' : '' }}>Katolik</option>
+                                                    <option value="Hindu" {{ old('religion') == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                                                    <option value="Buddha" {{ old('religion') == 'Buddha' ? 'selected' : '' }}>Buddha</option>
+                                                    <option value="Khonghucu" {{ old('religion') == 'Khonghucu' ? 'selected' : '' }}>Khonghucu</option>
+                                                </select>
+                                                @error('religion')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- /.card-body -->

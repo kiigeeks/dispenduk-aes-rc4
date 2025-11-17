@@ -89,8 +89,86 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="birthplace">Tempat Lahir</label>
+                                                <input type="text"
+                                                    class="form-control @error('birthplace') is-invalid @enderror"
+                                                    id="birthplace" name="birthplace" placeholder="Tempat Lahir" required
+                                                    value="{{ old('birthplace', $data->birthplace) }}">
+                                                @error('birthplace')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="gender">Jenis Kelamin</label>
+                                                <select 
+                                                    class="form-control @error('gender') is-invalid @enderror"
+                                                    id="gender" 
+                                                    name="gender"
+                                                    required
+                                                >
+                                                    <option value="" disabled selected>Pilih Gender</option>
+                                                    <option value="Laki-laki" {{ old('gender', $data->gender) == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                                                    <option value="Perempuan" {{ old('gender', $data->gender) == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                                                </select>
+                                                @error('gender')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="religion">Agama</label>
+                                                <select 
+                                                    class="form-control @error('religion') is-invalid @enderror"
+                                                    id="religion" 
+                                                    name="religion"
+                                                    required
+                                                >
+                                                    <option value="" disabled selected>Pilih Agama</option>
+                                                    <option value="Islam" {{ old('religion', $data->religion) == 'Islam' ? 'selected' : '' }}>Islam</option>
+                                                    <option value="Protestan" {{ old('religion', $data->religion) == 'Protestan' ? 'selected' : '' }}>Protestan</option>
+                                                    <option value="Katolik" {{ old('religion', $data->religion) == 'Katolik' ? 'selected' : '' }}>Katolik</option>
+                                                    <option value="Hindu" {{ old('religion', $data->religion) == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                                                    <option value="Buddha" {{ old('religion', $data->religion) == 'Buddha' ? 'selected' : '' }}>Buddha</option>
+                                                    <option value="Khonghucu" {{ old('religion', $data->religion) == 'Khonghucu' ? 'selected' : '' }}>Khonghucu</option>
+                                                </select>
+                                                @error('religion')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row mt-5">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="plaintext">Plainteks</label>
+                                                    <textarea
+                                                        class="form-control @error('plaintext') is-invalid @enderror"
+                                                        id="plaintext"
+                                                        name="plaintext"
+                                                        rows="3" readonly
+                                                        required>{{ $dataJson }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="key">Key</label>
+                                                <input type="text"
+                                                    class="form-control @error('key') is-invalid @enderror"
+                                                    id="key" name="key" readonly
+                                                    value="{{ env('ENCRYPT_KEY') }}">
+                                            </div>
+                                        </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="aes">Response Time AES</label>
@@ -175,6 +253,467 @@
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col-md-12">
+                                            <h3 class="mb-4">Hasil Pengujian Avalanche Effect</h3>
+
+
+                                            <h5 class="mb-2">Skenario 1 : Plainteks beda 1 karakter</h5>
+                                            <div class="row mb-4">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="methtod">Metode</label>
+                                                        <input type="text"
+                                                            class="form-control @error('methtod') is-invalid @enderror"
+                                                            id="methtod" name="methtod" readonly
+                                                            value="AES">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="avalanche">Avalanche Effect</label>
+                                                        <input type="text"
+                                                            class="form-control @error('avalanche') is-invalid @enderror"
+                                                            id="avalanche" name="avalanche" readonly
+                                                            value="{{ $case2['aes_avalanche'] }} %">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="key">Key</label>
+                                                        <input type="text"
+                                                            class="form-control @error('key') is-invalid @enderror"
+                                                            id="key" name="key" readonly
+                                                            value="{{ $case2['key'] }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="plaintext">Plainteks</label>
+                                                        <textarea
+                                                            class="form-control @error('plaintext') is-invalid @enderror"
+                                                            id="plaintext"
+                                                            name="plaintext"
+                                                            rows="3" readonly
+                                                            required>{{ $case2['plaintext'] }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 mb-2">
+                                                    <div class="form-group">
+                                                        <label for="chiperteks">Chiperteks AES</label>
+                                                        <textarea
+                                                            class="form-control @error('chiperteks') is-invalid @enderror"
+                                                            id="chiperteks"
+                                                            name="chiperteks"
+                                                            rows="3" readonly
+                                                            required>{{ $case2['aes_cipher'] }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="methtod">Metode</label>
+                                                        <input type="text"
+                                                            class="form-control @error('methtod') is-invalid @enderror"
+                                                            id="methtod" name="methtod" readonly
+                                                            value="RC4">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="avalanche">Avalanche Effect</label>
+                                                        <input type="text"
+                                                            class="form-control @error('avalanche') is-invalid @enderror"
+                                                            id="avalanche" name="avalanche" readonly
+                                                            value="{{ $case2['rc4_avalanche'] }} %">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="key">Key</label>
+                                                        <input type="text"
+                                                            class="form-control @error('key') is-invalid @enderror"
+                                                            id="key" name="key" readonly
+                                                            value="{{ $case2['key'] }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="plaintext">Plainteks</label>
+                                                        <textarea
+                                                            class="form-control @error('plaintext') is-invalid @enderror"
+                                                            id="plaintext"
+                                                            name="plaintext"
+                                                            rows="3" readonly
+                                                            required>{{ $case2['plaintext'] }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 mb-2">
+                                                    <div class="form-group">
+                                                        <label for="chiperteks">Chiperteks RC4</label>
+                                                        <textarea
+                                                            class="form-control @error('chiperteks') is-invalid @enderror"
+                                                            id="chiperteks"
+                                                            name="chiperteks"
+                                                            rows="3" readonly
+                                                            required>{{ $case2['rc4_cipher'] }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="methtod">Metode</label>
+                                                        <input type="text"
+                                                            class="form-control @error('methtod') is-invalid @enderror"
+                                                            id="methtod" name="methtod" readonly
+                                                            value="AES+RC4">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="avalanche">Avalanche Effect</label>
+                                                        <input type="text"
+                                                            class="form-control @error('avalanche') is-invalid @enderror"
+                                                            id="avalanche" name="avalanche" readonly
+                                                            value="{{ $case2['aes_rc4_avalanche'] }} %">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="key">Key</label>
+                                                        <input type="text"
+                                                            class="form-control @error('key') is-invalid @enderror"
+                                                            id="key" name="key" readonly
+                                                            value="{{ $case2['key'] }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="plaintext">Plainteks</label>
+                                                        <textarea
+                                                            class="form-control @error('plaintext') is-invalid @enderror"
+                                                            id="plaintext"
+                                                            name="plaintext"
+                                                            rows="3" readonly
+                                                            required>{{ $case2['plaintext'] }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 mb-2">
+                                                    <div class="form-group">
+                                                        <label for="chiperteks">Chiperteks AES+RC4</label>
+                                                        <textarea
+                                                            class="form-control @error('chiperteks') is-invalid @enderror"
+                                                            id="chiperteks"
+                                                            name="chiperteks"
+                                                            rows="5" readonly
+                                                            required>{{ $case2['aes_rc4_cipher'] }}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <h5 class="mb-2">Skenario 2 : Key beda 1 karakter</h5>
+                                            <div class="row mb-4">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="methtod">Metode</label>
+                                                        <input type="text"
+                                                            class="form-control @error('methtod') is-invalid @enderror"
+                                                            id="methtod" name="methtod" readonly
+                                                            value="AES">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="avalanche">Avalanche Effect</label>
+                                                        <input type="text"
+                                                            class="form-control @error('avalanche') is-invalid @enderror"
+                                                            id="avalanche" name="avalanche" readonly
+                                                            value="{{ $case3['aes_avalanche'] }} %">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="key">Key</label>
+                                                        <input type="text"
+                                                            class="form-control @error('key') is-invalid @enderror"
+                                                            id="key" name="key" readonly
+                                                            value="{{ $case3['key'] }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="plaintext">Plainteks</label>
+                                                        <textarea
+                                                            class="form-control @error('plaintext') is-invalid @enderror"
+                                                            id="plaintext"
+                                                            name="plaintext"
+                                                            rows="3" readonly
+                                                            required>{{ $case3['plaintext'] }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 mb-2">
+                                                    <div class="form-group">
+                                                        <label for="chiperteks">Chiperteks AES</label>
+                                                        <textarea
+                                                            class="form-control @error('chiperteks') is-invalid @enderror"
+                                                            id="chiperteks"
+                                                            name="chiperteks"
+                                                            rows="3" readonly
+                                                            required>{{ $case3['aes_cipher'] }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="methtod">Metode</label>
+                                                        <input type="text"
+                                                            class="form-control @error('methtod') is-invalid @enderror"
+                                                            id="methtod" name="methtod" readonly
+                                                            value="RC4">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="avalanche">Avalanche Effect</label>
+                                                        <input type="text"
+                                                            class="form-control @error('avalanche') is-invalid @enderror"
+                                                            id="avalanche" name="avalanche" readonly
+                                                            value="{{ $case3['rc4_avalanche'] }} %">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="key">Key</label>
+                                                        <input type="text"
+                                                            class="form-control @error('key') is-invalid @enderror"
+                                                            id="key" name="key" readonly
+                                                            value="{{ $case3['key'] }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="plaintext">Plainteks</label>
+                                                        <textarea
+                                                            class="form-control @error('plaintext') is-invalid @enderror"
+                                                            id="plaintext"
+                                                            name="plaintext"
+                                                            rows="3" readonly
+                                                            required>{{ $case3['plaintext'] }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 mb-2">
+                                                    <div class="form-group">
+                                                        <label for="chiperteks">Chiperteks RC4</label>
+                                                        <textarea
+                                                            class="form-control @error('chiperteks') is-invalid @enderror"
+                                                            id="chiperteks"
+                                                            name="chiperteks"
+                                                            rows="3" readonly
+                                                            required>{{ $case3['rc4_cipher'] }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="methtod">Metode</label>
+                                                        <input type="text"
+                                                            class="form-control @error('methtod') is-invalid @enderror"
+                                                            id="methtod" name="methtod" readonly
+                                                            value="AES+RC4">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="avalanche">Avalanche Effect</label>
+                                                        <input type="text"
+                                                            class="form-control @error('avalanche') is-invalid @enderror"
+                                                            id="avalanche" name="avalanche" readonly
+                                                            value="{{ $case3['aes_rc4_avalanche'] }} %">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="key">Key</label>
+                                                        <input type="text"
+                                                            class="form-control @error('key') is-invalid @enderror"
+                                                            id="key" name="key" readonly
+                                                            value="{{ $case3['key'] }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="plaintext">Plainteks</label>
+                                                        <textarea
+                                                            class="form-control @error('plaintext') is-invalid @enderror"
+                                                            id="plaintext"
+                                                            name="plaintext"
+                                                            rows="3" readonly
+                                                            required>{{ $case3['plaintext'] }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 mb-2">
+                                                    <div class="form-group">
+                                                        <label for="chiperteks">Chiperteks AES+RC4</label>
+                                                        <textarea
+                                                            class="form-control @error('chiperteks') is-invalid @enderror"
+                                                            id="chiperteks"
+                                                            name="chiperteks"
+                                                            rows="5" readonly
+                                                            required>{{ $case3['aes_rc4_cipher'] }}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <h5 class="mb-2">Skenario 3 : Plainteks dan Key beda 1 karakter</h5>
+                                            <div class="row mb-4">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="methtod">Metode</label>
+                                                        <input type="text"
+                                                            class="form-control @error('methtod') is-invalid @enderror"
+                                                            id="methtod" name="methtod" readonly
+                                                            value="AES">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="avalanche">Avalanche Effect</label>
+                                                        <input type="text"
+                                                            class="form-control @error('avalanche') is-invalid @enderror"
+                                                            id="avalanche" name="avalanche" readonly
+                                                            value="{{ $case4['aes_avalanche'] }} %">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="key">Key</label>
+                                                        <input type="text"
+                                                            class="form-control @error('key') is-invalid @enderror"
+                                                            id="key" name="key" readonly
+                                                            value="{{ $case4['key'] }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="plaintext">Plainteks</label>
+                                                        <textarea
+                                                            class="form-control @error('plaintext') is-invalid @enderror"
+                                                            id="plaintext"
+                                                            name="plaintext"
+                                                            rows="3" readonly
+                                                            required>{{ $case4['plaintext'] }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 mb-2">
+                                                    <div class="form-group">
+                                                        <label for="chiperteks">Chiperteks AES</label>
+                                                        <textarea
+                                                            class="form-control @error('chiperteks') is-invalid @enderror"
+                                                            id="chiperteks"
+                                                            name="chiperteks"
+                                                            rows="3" readonly
+                                                            required>{{ $case4['aes_cipher'] }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="methtod">Metode</label>
+                                                        <input type="text"
+                                                            class="form-control @error('methtod') is-invalid @enderror"
+                                                            id="methtod" name="methtod" readonly
+                                                            value="RC4">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="avalanche">Avalanche Effect</label>
+                                                        <input type="text"
+                                                            class="form-control @error('avalanche') is-invalid @enderror"
+                                                            id="avalanche" name="avalanche" readonly
+                                                            value="{{ $case4['rc4_avalanche'] }} %">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="key">Key</label>
+                                                        <input type="text"
+                                                            class="form-control @error('key') is-invalid @enderror"
+                                                            id="key" name="key" readonly
+                                                            value="{{ $case4['key'] }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="plaintext">Plainteks</label>
+                                                        <textarea
+                                                            class="form-control @error('plaintext') is-invalid @enderror"
+                                                            id="plaintext"
+                                                            name="plaintext"
+                                                            rows="3" readonly
+                                                            required>{{ $case4['plaintext'] }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 mb-2">
+                                                    <div class="form-group">
+                                                        <label for="chiperteks">Chiperteks RC4</label>
+                                                        <textarea
+                                                            class="form-control @error('chiperteks') is-invalid @enderror"
+                                                            id="chiperteks"
+                                                            name="chiperteks"
+                                                            rows="3" readonly
+                                                            required>{{ $case4['rc4_cipher'] }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="methtod">Metode</label>
+                                                        <input type="text"
+                                                            class="form-control @error('methtod') is-invalid @enderror"
+                                                            id="methtod" name="methtod" readonly
+                                                            value="AES+RC4">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="avalanche">Avalanche Effect</label>
+                                                        <input type="text"
+                                                            class="form-control @error('avalanche') is-invalid @enderror"
+                                                            id="avalanche" name="avalanche" readonly
+                                                            value="{{ $case4['aes_rc4_avalanche'] }} %">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="key">Key</label>
+                                                        <input type="text"
+                                                            class="form-control @error('key') is-invalid @enderror"
+                                                            id="key" name="key" readonly
+                                                            value="{{ $case4['key'] }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="plaintext">Plainteks</label>
+                                                        <textarea
+                                                            class="form-control @error('plaintext') is-invalid @enderror"
+                                                            id="plaintext"
+                                                            name="plaintext"
+                                                            rows="3" readonly
+                                                            required>{{ $case4['plaintext'] }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 mb-2">
+                                                    <div class="form-group">
+                                                        <label for="chiperteks">Chiperteks AES+RC4</label>
+                                                        <textarea
+                                                            class="form-control @error('chiperteks') is-invalid @enderror"
+                                                            id="chiperteks"
+                                                            name="chiperteks"
+                                                            rows="5" readonly
+                                                            required>{{ $case4['aes_rc4_cipher'] }}</textarea>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

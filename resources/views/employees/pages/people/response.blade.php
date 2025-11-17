@@ -84,8 +84,50 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="birthplace">Tempat Lahir</label>
+                                                <input type="text"
+                                                    class="form-control @error('birthplace') is-invalid @enderror"
+                                                    id="birthplace" name="birthplace" placeholder="Tempat Lahir" required readonly
+                                                    value="{{ old('birthplace', $data->birthplace) }}">
+                                                @error('birthplace')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="gender">Jenis Kelamin</label>
+                                                <input type="text"
+                                                    class="form-control @error('gender') is-invalid @enderror"
+                                                    id="gender" name="gender" placeholder="Jenis Kelamin" required readonly
+                                                    value="{{ old('gender', $data->gender) }}">
+                                                @error('gender')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="religion">Agama</label>
+                                                <input type="text"
+                                                    class="form-control @error('religion') is-invalid @enderror"
+                                                    id="religion" name="religion" placeholder="Agama" required readonly
+                                                    value="{{ old('religion', $data->religion) }}">
+                                                @error('religion')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="row mt-5">
+                                    {{-- <div class="row mt-5">
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="aes">Response Time AES</label>
@@ -172,7 +214,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
